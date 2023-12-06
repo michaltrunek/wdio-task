@@ -38,10 +38,12 @@ describe("Sales page | Ordering items", () => {
     // Go to Sales / Women’s Deals / Add one random product
     const { productName: firstProductName, productPrice: firstProductPrice } =
       await addItemToCart("female");
+      await cartPage.checkItemsInCart(1);
 
     // Go to Sales / Men’s Deals / Add one random product
     const { productName: secondProductName, productPrice: secondProductPrice } =
       await addItemToCart("male");
+      await cartPage.checkItemsInCart(2);
 
     await cartPage.open();
     await cartPage.checkProduct(firstProductName, secondProductName);

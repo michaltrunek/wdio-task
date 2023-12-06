@@ -7,6 +7,7 @@ class ProductListPage extends Page {
   }
 
   public async selectItem() {
+    await expect(this.itemsProduct).toBeElementsArrayOfSize({ gte: 1 });
     const items = await this.itemsProduct;
     // get a random item index from the list of products
     const randomItem = getRandomInt(items.length);

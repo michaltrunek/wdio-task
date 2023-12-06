@@ -58,11 +58,19 @@ export const config: Options.Testrunner = {
   // Sauce Labs platform configurator - a great tool to configure your capabilities:
   // https://saucelabs.com/platform/platform-configurator
   //
-    capabilities: [
-      {
-        browserName: "chrome"
+  capabilities: [
+    {
+      browserName: "chrome",
+      "goog:chromeOptions": {
+        args: [
+          "--no-sandbox",
+          "--headless",
+          "--disable-gpu",
+          "--window-size=1440,735",
+        ],
       },
-    ],
+    },
+  ],
 
   //
   // ===================
@@ -98,7 +106,7 @@ export const config: Options.Testrunner = {
   baseUrl: "https://magento.softwaretestingboard.com",
   //
   // Default timeout for all waitFor* commands.
-  waitforTimeout: 10000,
+  waitforTimeout: 20000,
   //
   // Default timeout in milliseconds for request
   // if browser driver or grid doesn't send response
@@ -139,9 +147,7 @@ export const config: Options.Testrunner = {
     [
       "allure",
       {
-        outputDir: "allure-results",
-        disableWebdriverStepsReporting: true,
-        disableWebdriverScreenshotsReporting: true,
+        outputDir: "allure-results"
       },
     ],
   ],

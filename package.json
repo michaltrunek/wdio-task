@@ -11,7 +11,9 @@
     "typescript": "^5.2.2"
   },
   "scripts": {
-    "test": "wdio run ./wdio.conf.ts",
-    "report": "allure generate ./allure-results && allure open"
+    "test": "wdio run wdio.conf.ts",
+    "report": "allure generate ./allure-results --clean && allure open",
+    "docker-build": "docker build -t mytest -f Dockerfile .",
+    "docker-run": "docker run -v ./allure-results:/app/allure-results -it --shm-size=2gb mytest"
   }
 }
